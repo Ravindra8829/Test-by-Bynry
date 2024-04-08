@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Request Tracking</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Service Request Tracking</h1>
+        <ul>
+            {% for request in service_requests %}
+                <li>
+                    <strong>Request Type:</strong> {{ request.request_type }} <br>
+                    <strong>Status:</strong> {{ request.status }} <br>
+                    <strong>Submitted At:</strong> {{ request.submitted_at }} <br>
+                    {% if request.resolved_at %}
+                        <strong>Resolved At:</strong> {{ request.resolved_at }} <br>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>No service requests found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
